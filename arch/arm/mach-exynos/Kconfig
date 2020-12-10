@@ -45,6 +45,16 @@ config ARCH_EXYNOS7
 	  Cortex-A53 CPU (and some in a big.LITTLE configuration). There are
 	  multiple SoCs in this family including Exynos7420.
 
+config ARCH_EXYNOS9
+	bool "Exynos9 SoC family"
+	select ARM64
+	select BLK
+	select DM_MMC
+	help
+	  Samsung Exynos9 SoC family are based on ARM Cortex-A77 CPU,
+	  Cortex-A73 CPU, Cortex-A55 CPU, Cortex-A53 CPU or Custom Mongoose CPU.
+	  There are multiple SoCs in this family including Exynos8995.
+
 endchoice
 
 if ARCH_EXYNOS4
