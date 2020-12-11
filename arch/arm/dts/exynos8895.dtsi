@@ -8,14 +8,94 @@
 
 /dts-v1/;
 #include "skeleton.dtsi"
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+
 / {
 	compatible = "samsung,exynos8895";
+
+	aliases {
+		pinctrl6 = &pinctrl_6;
+	};
 
 	fin_pll: xxti {
 		compatible = "fixed-clock";
 		clock-output-names = "fin_pll";
 		u-boot,dm-pre-reloc;
 		#clock-cells = <0>;
+	};
+
+	gic: interrupt-controller@10200000 {
+		compatible = "arm,cortex-a15-gic";
+		#interrupt-cells = <3>;
+		interrupt-controller;
+		reg = <0x10201000 0x1000>,
+		      <0x10202000 0x1000>,
+		      <0x10204000 0x2000>,
+		      <0x10206000 0x2000>;
+		interrupts = <GIC_PPI 9 0xf04>;
+	};
+
+	/* PERIC0 */
+	pinctrl_6: pinctrl@104D0000 {
+		compatible = "samsung,exynos8895-pinctrl";
+		reg = <0x104D0000 0x1000>;
+		interrupts = <GIC_SPI 386 IRQ_TYPE_LEVEL_HIGH>;
+
+		gpb1: gpb1 {
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		gpd0: gpd0 {
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		gpd1: gpd1 {
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		gpd2: gpd2 {
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		gpd3: gpd3 {
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		gpe7: gpe7 {
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+		gpf1: gpf1 {
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
 	};
 
 	/* UART_DEBUG */
