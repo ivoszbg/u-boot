@@ -1,0 +1,6 @@
+Samsung S8/S8+ (dreamlte)/(dream2lte) Board
+M:	Ivaylo Ivanov <ivo.ivanov@null.net>
+S:	Maintained
+F:	board/samsung/dream/
+F:	include/configs/dream.h
+F:	configs/dream_defconfig.h

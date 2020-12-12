@@ -1,0 +1,18 @@
+if TARGET_DREAM
+
+config SYS_BOARD
+	default "dream"
+	help
+	  dream is a production board for Galaxy S8/S8+ phone on Exynos8895 SoC.
+
+config SYS_VENDOR
+	default "samsung"
+
+config SYS_CONFIG_NAME
+	default "dream"
+
+config EXYNOS8895
+    bool "Exynos 8895 SOC support"
+    default "y"
+
+endif
