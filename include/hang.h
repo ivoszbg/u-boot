@@ -17,6 +17,7 @@
  * This function does not return.
  */
 void hang(void) __attribute__ ((noreturn));
+//#define hang() printf("calling hang in: %s\n", __func__); actual_hang()
 #endif
 
 #endif

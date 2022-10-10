@@ -1,0 +1,56 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Samsung's Galaxy Xcover 3 Value Edition Device Tree
+ *
+ * Copyright (c) 2022, Ivaylo Ivanov <ivo.ivanov.ivanov1@gmail.com>
+ */
+/dts-v1/;
+
+#include "exynos3475.dtsi"
+
+/ {
+	//model = "Samsung Galaxy Xcover 3 Value Edition";
+	//compatible = "samsung,g389f", "samsung,exynos3475";
+	compatible = "samsung,UNIVERSAL3475\0samsung,exynos3475";
+	//interrupt-parent = <0x01>;
+	model = "Samsung UNIVERSAL3475 board based on EXYNOS3475";
+	model_info-chip = <0xd93>;
+	model_info-platform = "android";
+	model_info-subtype = "samsung";
+	model_info-hw_rev = <0x00>;
+	model_info-hw_rev_end = <0x01>;
+
+	chosen {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		framebuffer0: framebuffer@57e05000 {
+			status= "okay";
+			compatible = "simple-framebuffer";
+			reg = <0 0x57e05000 0 (480 * 800 * 4)>;
+			width = <480>;
+			height = <800>;
+			stride = <(480 * 4)>;
+			format = "a8r8g8b8";
+		};
+	};
+
+	memory {
+		device_type = "memory";
+
+		reg = <0x0 0x20000000 0x0 0x48000000>;
+		//reg = <0x0 0x0 0x0 0x0>;
+	};
+
+	reserved-memory {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		continuous_splash: framebuffer@57e05000 {
+			reg = <0 0x57e05000 0 (480 * 800 * 4)>;
+			no-map;
+		};
+	};
+};

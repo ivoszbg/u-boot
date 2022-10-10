@@ -1,0 +1,19 @@
+if TARGET_XCOVER3VELTE
+
+config SYS_BOARD
+	string
+	default "exynos3475-xcover3velte"
+
+config SYS_VENDOR
+	string
+	default "samsung"
+
+config SYS_SOC
+	string
+	default "exynos3475"
+
+config SYS_CONFIG_NAME
+	string
+	default "exynos3475-xcover3velte"
+
+endif

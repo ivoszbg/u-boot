@@ -153,7 +153,7 @@ static void serial_find_console_or_panic(void)
 	}
 
 #ifdef CONFIG_REQUIRE_SERIAL_CONSOLE
-	panic_str("No serial driver found");
+	printf("No serial driver found");
 #endif
 }
 #endif /* CONFIG_SERIAL_PRESENT */
@@ -161,12 +161,12 @@ static void serial_find_console_or_panic(void)
 /* Called prior to relocation */
 int serial_init(void)
 {
-#if CONFIG_IS_ENABLED(SERIAL_PRESENT)
-	serial_find_console_or_panic();
-	gd->flags |= GD_FLG_SERIAL_READY;
-	serial_setbrg();
-#endif
 
+#if CONFIG_IS_ENABLED(SERIAL_PRESENT)
+	//serial_find_console_or_panic();
+	//gd->flags |= GD_FLG_SERIAL_READY;
+	//serial_setbrg();
+#endif
 	return 0;
 }
 
