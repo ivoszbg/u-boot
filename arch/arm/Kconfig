@@ -311,7 +311,7 @@ config CPU_ARM1176
 config CPU_V7A
 	bool
 	select HAS_THUMB2
-	select HAS_VBAR
+	select HAS_VBAR if !ARCH_EXYNOS_SANE
 	select SYS_CACHE_SHIFT_6
 	imply SYS_ARM_MMU
 

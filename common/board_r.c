@@ -803,6 +803,10 @@ static init_fnc_t init_sequence_r[] = {
 
 void board_init_r(gd_t *new_gd, ulong dest_addr)
 {
+puts("lolgood");
+		for (volatile int addr = 0xbf700000ull; addr < 0xbf700000ull + (640 * 1336 * 4); addr += 4) {
+			*(volatile int *) (addr) = 0xFFFFFF;
+		}
 	/*
 	 * Set up the new global data pointer. So far only x86 does this
 	 * here.

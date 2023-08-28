@@ -10,8 +10,8 @@
 #include <linux/sizes.h>
 
 /* ram memory-related information */
-#define CONFIG_SYS_SDRAM_BASE		0x20000000
-#define PHYS_SDRAM_SIZE		0x59000000
+#define CONFIG_SYS_SDRAM_BASE		0x80000000
+#define PHYS_SDRAM_SIZE		0x40000000
 
 //#define hang() puts("calling hang in: %s\n", __func__); actual_hang()
 
@@ -28,10 +28,6 @@
 #define PHYS_SDRAM_3_SIZE	SDRAM_BANK_SIZE
 #define PHYS_SDRAM_4		(CONFIG_SYS_SDRAM_BASE + (3 * SDRAM_BANK_SIZE))
 #define PHYS_SDRAM_4_SIZE	SDRAM_BANK_SIZE
-#define PHYS_SDRAM_5		(CONFIG_SYS_SDRAM_BASE + (4 * SDRAM_BANK_SIZE))
-#define PHYS_SDRAM_5_SIZE	SDRAM_BANK_SIZE
-#define PHYS_SDRAM_6		(CONFIG_SYS_SDRAM_BASE + (5 * SDRAM_BANK_SIZE))
-#define PHYS_SDRAM_6_SIZE	SDRAM_BANK_SIZE
 
 
 
@@ -65,8 +61,7 @@
 /* Extra Commands */
 
 #define CONFIG_SYS_GBL_DATA_SIZE	1024	/* Global data structures */
-#define CONFIG_SYS_INIT_SP_ADDR		CONFIG_SYS_TEXT_BASE + SZ_2M - GENERATED_GBL_DATA_SIZE
-
+#define CONFIG_SYS_INIT_SP_ADDR	0x85100e50
 /* Monitor Command Prompt */
 #define CONFIG_SYS_CBSIZE		1024	/* Console I/O Buffer Size */
 

@@ -172,7 +172,7 @@ static inline void hax_console_newline(void)
 
 	if(hax_cons.curr_row >= 24) {
 		//memmove(0x57e05000 + 4 * 480 * VIDEO_FONT_HEIGHT, 0x57e05000, (480 * 800 * 4) - (480 * 4) * VIDEO_FONT_HEIGHT);
-		for (volatile int addr = 0x57e05000ull; addr < 0x57e05000ull + (800 * 480 * 4); addr += 4) {
+		for (volatile int addr = 0xbf700000ull; addr < 0xbf700000ull + (640 * 1336 * 4); addr += 4) {
 			*(volatile int *) (addr) = 0;
 		}
 		hax_cons.curr_row = 0;
@@ -190,8 +190,8 @@ static void hax_lcd_putc_xy0(struct console_t *pcons, ushort x, ushort y, char c
 	int fg_color = 0xFFFFFFFF;
 	int bg_color = 0x00000000;
 	int i, row;
-	int *dst = (int *)(long int)(0x57e05000) +
-				  y * (480 * 4 /2) +
+	int *dst = (int *)(long int)(0xbf700000) +
+				  y * (640 * 4 /1) +
 				  x;
 
 	for (row = 0; row < VIDEO_FONT_HEIGHT; row++) {
@@ -200,7 +200,7 @@ static void hax_lcd_putc_xy0(struct console_t *pcons, ushort x, ushort y, char c
 			*dst++ = (bits & 0x80) ? fg_color : bg_color;
 			bits <<= 1;
 		}
-		dst += ((480 * 4 /2) - VIDEO_FONT_WIDTH);
+		dst += ((480 * 4 /1) - VIDEO_FONT_WIDTH);
 	}
 }
 
@@ -258,7 +258,7 @@ void hax_lcd_puts(const char *s)
 
 static inline void _debug_uart_init(void)
 {
-	hax_lcd_puts("HOLY");
+
 }
 
 DEBUG_UART_FUNCS

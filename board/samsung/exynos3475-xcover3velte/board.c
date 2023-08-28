@@ -21,6 +21,12 @@ void kekw(void)
 	panic("WE ARE HERE ALREADY DUMBASS");
 }
 
+ulong get_tbclk(void)
+{
+    // Corresponds to TIMER_F setup from s5l87xx.c.
+    return 1000000;
+}
+
 int dram_init(void)
 {
 	gd->ram_size = PHYS_SDRAM_SIZE;
@@ -29,6 +35,11 @@ int dram_init(void)
 
 int dram_init_banksize(void)
 {
+	/* Clean FB */
+	//for (volatile int addr = 0xbf700000ull; addr < 0xbf700000ull + (640 * 1336 * 4); addr += 4) {
+	//	*(volatile int *) (addr) = 0;
+	//}
+
 	gd->bd->bi_dram[0].start = PHYS_SDRAM_1;
 	gd->bd->bi_dram[0].size = PHYS_SDRAM_1_SIZE;
 	gd->bd->bi_dram[1].start = PHYS_SDRAM_2;
@@ -37,10 +48,6 @@ int dram_init_banksize(void)
 	gd->bd->bi_dram[2].size = PHYS_SDRAM_3_SIZE;
 	gd->bd->bi_dram[3].start = PHYS_SDRAM_4;
 	gd->bd->bi_dram[3].size = PHYS_SDRAM_4_SIZE;
-	gd->bd->bi_dram[4].start = PHYS_SDRAM_5;
-	gd->bd->bi_dram[4].size = PHYS_SDRAM_5_SIZE;
-	gd->bd->bi_dram[5].start = PHYS_SDRAM_6;
-	gd->bd->bi_dram[5].size = PHYS_SDRAM_6_SIZE;
 
 	return 0;
 }
@@ -55,8 +62,13 @@ void enable_caches(void)
 
 int board_init(void)
 {
+	for (volatile int addr = 0xbf700000ull; addr < 0xbf700000ull + (640 * 1336 * 4); addr += 4) {
+		*(volatile int *) (addr) = 0xFFFFFF;
+	}
 	return 0;
 }
+
+
 
 #ifdef CONFIG_USB_DWC3
 static struct dwc3_device dwc3_device_data = {

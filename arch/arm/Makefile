@@ -79,6 +79,7 @@ machine-$(CONFIG_ARCH_OWL)		+= owl
 machine-$(CONFIG_ARCH_RMOBILE)		+= rmobile
 machine-$(CONFIG_ARCH_ROCKCHIP)		+= rockchip
 machine-$(CONFIG_ARCH_S5PC1XX)		+= s5pc1xx
+machine-$(CONFIG_ARCH_EXYNOS_SANE)	+= exynos-sane
 machine-$(CONFIG_ARCH_SNAPDRAGON)	+= snapdragon
 machine-$(CONFIG_ARCH_SOCFPGA)		+= socfpga
 machine-$(CONFIG_ARCH_STM32)		+= stm32
