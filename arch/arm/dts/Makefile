@@ -817,7 +817,9 @@ dtb-y += \
 
 endif
 
-dtb-$(CONFIG_MX6SL) += imx6sl-evk.dtb
+dtb-$(CONFIG_MX6SL) += \
+	imx6sl-amazon-kindle-pw3.dtb \
+	imx6sl-evk.dtb
 
 dtb-$(CONFIG_MX6SLL) += imx6sll-evk.dtb
 
